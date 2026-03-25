@@ -1,60 +1,55 @@
 <!DOCTYPE html>
-<!-- saved from url=(0030)file:///C:/Users/1/indexs.html -->
-<html lang="ar" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جراند ريستورانت | نظام التيك أواي والواتساب</title>
-    <link href="./جراند ريستورانت _ نظام التيك أواي والواتساب_files/css2" rel="stylesheet">
+    <title>جراند ريستورانت | نظام الإدارة المتكامل 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #d4af37; --dark: #0a0a0a; --success: #25D366; --danger: #ff4d4d; --gray: #1a1a1a; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
         body { background: var(--dark); color: #e0e0e0; overflow-x: hidden; }
         
         header { position: fixed; width: 100%; height: 60px; padding: 0 20px; background: #000; border-bottom: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
-        .logo { font-weight: 800; color: var(--gold); font-size: 1.2rem; }
+        .logo { font-weight: 800; color: var(--gold); font-size: 1.3rem; }
 
-        /* شريط الأقسام والبحث */
-        .categories-nav { position: fixed; top: 60px; width: 100%; background: #111; display: flex; overflow-x: auto; padding: 10px; gap: 10px; border-bottom: 1px solid #222; z-index: 998; }
-        .cat-tab { background: var(--gray); color: #bbb; border: 1px solid #444; padding: 6px 15px; border-radius: 20px; white-space: nowrap; cursor: pointer; font-size: 0.9rem; }
+        .categories-nav { position: fixed; top: 60px; width: 100%; background: #111; display: flex; overflow-x: auto; padding: 12px; gap: 10px; border-bottom: 1px solid #222; z-index: 998; scrollbar-width: none; }
+        .cat-tab { background: var(--gray); color: #bbb; border: 1px solid #444; padding: 8px 18px; border-radius: 25px; white-space: nowrap; cursor: pointer; font-size: 0.85rem; transition: 0.3s; }
         .cat-tab.active { background: var(--gold); color: #000; font-weight: bold; }
 
-        .search-container { position: fixed; top: 110px; width: 100%; padding: 10px 5%; background: #0a0a0a; z-index: 997; border-bottom: 1px solid #333; }
-        #search-input { width: 100%; padding: 12px; border-radius: 30px; border: 1px solid var(--gold); background: #1a1a1a; color: white; outline: none; text-align: center; font-size: 1rem; }
+        .search-container { position: fixed; top: 115px; width: 100%; padding: 10px 5%; background: #0a0a0a; z-index: 997; border-bottom: 1px solid #333; }
+        #search-input { width: 100%; padding: 12px; border-radius: 30px; border: 1px solid var(--gold); background: #1a1a1a; color: white; outline: none; text-align: center; }
 
-        /* قائمة الطعام */
-        .main-content { padding: 180px 5% 100px; max-width: 1200px; margin: 0 auto; }
-        .menu-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; }
-        .meal-card { background: var(--gray); padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; transition: 0.2s; }
-        .meal-card:hover { border-color: var(--gold); }
-        .meal-price { color: var(--gold); font-weight: 800; }
-        .add-qty { background: var(--gold); border: none; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; font-size: 24px; font-weight: bold; }
+        .main-content { padding: 190px 5% 100px; max-width: 1200px; margin: 0 auto; }
+        .menu-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .meal-card { background: var(--gray); padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; position: relative; }
+        .meal-info h3 { font-size: 0.9rem; color: #fff; margin-bottom: 5px; }
+        .meal-price { color: var(--gold); font-weight: 800; font-size: 1.1rem; }
+        .add-qty { background: var(--gold); border: none; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 20px; }
 
-        /* لوحة الفاتورة الجانبية */
-        .panel { position: fixed; left: -100%; top: 0; width: 380px; height: 100%; background: #0d0d0d; z-index: 2000; padding: 25px; transition: 0.5s; border-right: 3px solid var(--gold); display: flex; flex-direction: column; box-shadow: 10px 0 30px black; }
-        .panel.open { left: 0; }
+        .panel { position: fixed; left: -100%; top: 0; width: 380px; height: 100%; background: #0d0d0d; z-index: 2000; padding: 20px; transition: 0.5s; border-right: 3px solid var(--gold); display: flex; flex-direction: column; }
+        .panel.open { left: 0; box-shadow: 15px 0 50px black; }
         
-        .customer-form { margin-top: 10px; }
-        .customer-form input { width: 100%; padding: 10px; margin-bottom: 8px; background: #1a1a1a; border: 1px solid #333; color: #fff; border-radius: 5px; outline: none; }
-        .customer-form input:focus { border-color: var(--gold); }
+        .customer-form input { width: 100%; padding: 12px; margin-bottom: 8px; background: #1a1a1a; border: 1px solid #333; color: #fff; border-radius: 8px; outline: none; }
+        .highlight-input { border-color: var(--success) !important; background: #001a00 !important; }
 
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #222; }
-        .btn-del { color: var(--danger); cursor: pointer; padding: 5px; font-weight: bold; }
+        .cart-list { flex-grow: 1; overflow-y: auto; margin: 10px 0; border-top: 1px solid #222; }
+        .cart-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1a1a1a; font-size: 0.9rem; }
 
-        /* الأزرار */
-        .actions { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
-        .btn-whatsapp { background: var(--success); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .btn-print { background: #fff; color: #000; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .btn-clear { background: #333; color: #ffbcbc; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; }
+        .total-box { text-align: center; padding: 15px; background: #111; border-radius: 12px; border: 1px solid var(--gold); margin-bottom: 10px; }
+        .total-box h1 { color: var(--gold); font-size: 2.2rem; }
 
-        .floating-cart { position: fixed; bottom: 30px; right: 30px; background: var(--gold); width: 70px; height: 70px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1500; box-shadow: 0 5px 20px rgba(0,0,0,0.5); font-size: 24px; }
+        .actions { display: flex; flex-direction: column; gap: 8px; }
+        .btn-whatsapp { background: var(--success); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
+        
+        .floating-cart { position: fixed; bottom: 30px; right: 30px; background: var(--gold); width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 1500; font-size: 24px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+        #cart-badge { position: absolute; top: 0; right: 0; background: red; color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 12px; display: flex; justify-content: center; align-items: center; font-weight: bold; }
 
         @media print {
             body * { visibility: hidden; }
             #cart-panel, #cart-panel * { visibility: visible; }
             #cart-panel { position: absolute; left: 0; top: 0; width: 100%; border: none; background: white; color: black; }
-            button, .floating-cart, .categories-nav, .search-container, header, .btn-del, span[onclick] { display: none !important; }
-            .customer-form input { border: none; background: transparent; color: black; font-weight: bold; font-size: 1.1rem; }
-            #grand-total { color: black !important; font-size: 24px; border-top: 2px solid #000; padding-top: 10px; }
+            button, .floating-cart, header, .categories-nav, .search-container { display: none !important; }
         }
     </style>
 </head>
@@ -62,569 +57,276 @@
 
     <header>
         <div class="logo">GRAND RESTAURANT</div>
-        <button onclick="toggleReports()" style="background: none; border: 1px solid var(--gold); color: var(--gold); padding: 5px 10px; border-radius: 5px; cursor: pointer;">📊 تقرير اليوم</button>
+        <button onclick="toggleReports()" style="background:none; border:1px solid var(--gold); color:var(--gold); padding:5px 10px; border-radius:5px; cursor:pointer;">📊 التقارير</button>
     </header>
 
-    <div class="categories-nav" id="tabs"><div class="cat-tab " onclick="selectCategory(&#39;المشويات&#39;)">المشويات</div><div class="cat-tab " onclick="selectCategory(&#39;سي فوود&#39;)">سي فوود</div><div class="cat-tab " onclick="selectCategory(&#39;طواجن&#39;)">طواجن</div><div class="cat-tab " onclick="selectCategory(&#39;بيتزا&#39;)">بيتزا</div><div class="cat-tab " onclick="selectCategory(&#39;برجر&#39;)">برجر</div><div class="cat-tab " onclick="selectCategory(&#39;مكرونات&#39;)">مكرونات</div><div class="cat-tab " onclick="selectCategory(&#39;سندوتشات&#39;)">سندوتشات</div><div class="cat-tab " onclick="selectCategory(&#39;مقبلات&#39;)">مقبلات</div><div class="cat-tab " onclick="selectCategory(&#39;حلويات&#39;)">حلويات</div><div class="cat-tab active" onclick="selectCategory(&#39;مشروبات&#39;)">مشروبات</div></div>
-
+    <div class="categories-nav" id="tabs"></div>
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="🔍 ابحث عن وجبة بالاسم..." oninput="handleSearch()">
+        <input type="text" id="search-input" placeholder="🔍 ابحث عن صنف معين (كفتة، برجر، نيجرسكو)..." oninput="handleSearch()">
     </div>
 
     <div id="cart-panel" class="panel">
-        <h2>🧾 تفاصيل الطلب</h2>
-        <span onclick="toggleCart()" style="float:left; cursor:pointer; font-size: 30px; color: var(--gold);">×</span>
+        <h2 style="color:var(--gold);">🧾 الفاتورة</h2>
+        <span onclick="toggleCart()" style="float:left; cursor:pointer; font-size:30px; color:var(--gold);">&times;</span>
         
         <div class="customer-form">
+            <input type="number" id="cust-phone" placeholder="رقم موبايل العميل" oninput="lookupCustomer()">
             <input type="text" id="cust-name" placeholder="اسم العميل">
-            <input type="number" id="cust-phone" placeholder="رقم الموبايل (واتساب)">
-            <input type="text" id="cust-addr" placeholder="العنوان (للدليفري)">
+            <input type="text" id="cust-addr" placeholder="العنوان بالتفصيل">
+            <div style="background:#1a1a1a; padding:10px; border-radius:8px; border:1px solid #333; margin-bottom:10px;">
+                <label style="font-size:0.75rem; color:#888;">خدمة التوصيل (جنية):</label>
+                <input type="number" id="delivery-fee" value="0" oninput="updateUI()" style="margin-top:5px; border-color:var(--success);">
+            </div>
         </div>
 
-        <div id="cart-list" style="flex-grow:1; overflow-y:auto; margin:15px 0; border-top: 1px solid #333;"></div>
+        <div class="cart-list" id="cart-list"></div>
 
-        <div style="text-align:center; padding:15px; background: #1a1a1a; border-radius: 10px; margin-bottom: 10px;">
-            <small style="color:#888;">الإجمالي النهائي</small>
-            <div id="grand-total" style="color:var(--gold); font-size: 2.2rem; font-weight: 800;">0</div>
-            <small>جنية مصري</small>
+        <div class="total-box">
+            <h1 id="grand-total">0</h1>
+            <p>جنية مصري</p>
         </div>
 
         <div class="actions">
-            <button class="btn-whatsapp" onclick="sendWhatsApp()">إرسال واتساب ✅</button>
-            <button class="btn-print" onclick="window.print()">طباعة الفاتورة 🖨️</button>
-            <button class="btn-clear" onclick="clearAll()">مسح الفاتورة الحالية 🔄</button>
+            <button class="btn-whatsapp" onclick="sendWhatsApp()">✅ حفظ وإرسال واتساب</button>
+            <button class="btn-print" onclick="window.print()">🖨️ طباعة الفاتورة</button>
+            <button onclick="clearCart()" style="background:none; color:#555; border:none; cursor:pointer; font-size:0.8rem; margin-top:5px;">مسح السلة 🔄</button>
         </div>
     </div>
 
     <div id="reports-panel" class="panel">
-        <h2>📊 مبيعات اليوم</h2>
-        <span onclick="toggleReports()" style="float:left; cursor:pointer; font-size: 30px;">×</span>
-        <div id="reports-content" style="margin-top: 20px;">
-                <div style="background:#222; padding:20px; border-radius:10px; border-right:5px solid var(--gold);">
-                    <p style="font-size:1.1rem">💰 إجمالي مبيعات اليوم: <br><b style="font-size:1.8rem; color:var(--gold)">300 ج.م</b></p>
-                    <hr style="margin:10px 0; opacity:0.2">
-                    <p>🧾 عدد الفواتير الناجحة: <b>1</b></p>
-                </div></div>
-        <button class="btn-clear" style="margin-top:auto; color:red;" onclick="resetStats()">تصفير اليومية ⚠️</button>
+        <h2>📊 تقرير المبيعات</h2>
+        <span onclick="toggleReports()" style="float:left; cursor:pointer; font-size:30px;">&times;</span>
+        <div id="reports-content" style="margin:20px 0;"></div>
+        <button onclick="resetStats()" style="margin-top:auto; color:red; border:1px solid #333; padding:10px; background:none; border-radius:8px;">تصفير اليومية ⚠️</button>
     </div>
 
     <div class="main-content">
-        <div class="menu-list" id="menu-container">
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 1</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-1&#39;, &#39;مانجو 1&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 2</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-2&#39;, &#39;مانجو 2&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 3</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-3&#39;, &#39;مانجو 3&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 4</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-4&#39;, &#39;مانجو 4&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 5</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-5&#39;, &#39;مانجو 5&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 6</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-6&#39;, &#39;مانجو 6&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 7</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-7&#39;, &#39;مانجو 7&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 8</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-8&#39;, &#39;مانجو 8&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 9</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-9&#39;, &#39;مانجو 9&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 10</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-10&#39;, &#39;مانجو 10&#39;, 80)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 11</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-11&#39;, &#39;مانجو 11&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 12</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-12&#39;, &#39;مانجو 12&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 13</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-13&#39;, &#39;مانجو 13&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 14</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-14&#39;, &#39;مانجو 14&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 15</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-15&#39;, &#39;مانجو 15&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 16</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-16&#39;, &#39;مانجو 16&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 17</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-17&#39;, &#39;مانجو 17&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 18</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-18&#39;, &#39;مانجو 18&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 19</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-19&#39;, &#39;مانجو 19&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 20</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-20&#39;, &#39;مانجو 20&#39;, 80)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 21</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-21&#39;, &#39;مانجو 21&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 22</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-22&#39;, &#39;مانجو 22&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 23</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-23&#39;, &#39;مانجو 23&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 24</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-24&#39;, &#39;مانجو 24&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 25</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-25&#39;, &#39;مانجو 25&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 26</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-26&#39;, &#39;مانجو 26&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 27</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-27&#39;, &#39;مانجو 27&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 28</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-28&#39;, &#39;مانجو 28&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 29</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-29&#39;, &#39;مانجو 29&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 30</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-30&#39;, &#39;مانجو 30&#39;, 80)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 31</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-31&#39;, &#39;مانجو 31&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 32</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-32&#39;, &#39;مانجو 32&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 33</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-33&#39;, &#39;مانجو 33&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 34</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-34&#39;, &#39;مانجو 34&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 35</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-35&#39;, &#39;مانجو 35&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 36</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-36&#39;, &#39;مانجو 36&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 37</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-37&#39;, &#39;مانجو 37&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 38</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-38&#39;, &#39;مانجو 38&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 39</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-39&#39;, &#39;مانجو 39&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 40</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-40&#39;, &#39;مانجو 40&#39;, 80)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 41</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-41&#39;, &#39;مانجو 41&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 42</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-42&#39;, &#39;مانجو 42&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 43</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-43&#39;, &#39;مانجو 43&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 44</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-44&#39;, &#39;مانجو 44&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 45</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-45&#39;, &#39;مانجو 45&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 46</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-46&#39;, &#39;مانجو 46&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 47</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-47&#39;, &#39;مانجو 47&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 48</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-48&#39;, &#39;مانجو 48&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 49</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-49&#39;, &#39;مانجو 49&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 50</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-50&#39;, &#39;مانجو 50&#39;, 80)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 51</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-51&#39;, &#39;مانجو 51&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 52</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-52&#39;, &#39;مانجو 52&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 53</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-53&#39;, &#39;مانجو 53&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 54</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-54&#39;, &#39;مانجو 54&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 55</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-55&#39;, &#39;مانجو 55&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 56</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-56&#39;, &#39;مانجو 56&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 57</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-57&#39;, &#39;مانجو 57&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 58</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-58&#39;, &#39;مانجو 58&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 59</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-59&#39;, &#39;مانجو 59&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 60</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-60&#39;, &#39;مانجو 60&#39;, 80)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 61</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-61&#39;, &#39;مانجو 61&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 62</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-62&#39;, &#39;مانجو 62&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 63</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-63&#39;, &#39;مانجو 63&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 64</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-64&#39;, &#39;مانجو 64&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 65</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-65&#39;, &#39;مانجو 65&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 66</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-66&#39;, &#39;مانجو 66&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 67</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-67&#39;, &#39;مانجو 67&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 68</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-68&#39;, &#39;مانجو 68&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 69</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-69&#39;, &#39;مانجو 69&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 70</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-70&#39;, &#39;مانجو 70&#39;, 80)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 71</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-71&#39;, &#39;مانجو 71&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 72</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-72&#39;, &#39;مانجو 72&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 73</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-73&#39;, &#39;مانجو 73&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 74</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-74&#39;, &#39;مانجو 74&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 75</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-75&#39;, &#39;مانجو 75&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 76</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-76&#39;, &#39;مانجو 76&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 77</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-77&#39;, &#39;مانجو 77&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 78</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-78&#39;, &#39;مانجو 78&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 79</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-79&#39;, &#39;مانجو 79&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 80</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-80&#39;, &#39;مانجو 80&#39;, 80)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 81</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-81&#39;, &#39;مانجو 81&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 82</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-82&#39;, &#39;مانجو 82&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 83</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-83&#39;, &#39;مانجو 83&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 84</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-84&#39;, &#39;مانجو 84&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 85</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-85&#39;, &#39;مانجو 85&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 86</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-86&#39;, &#39;مانجو 86&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 87</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-87&#39;, &#39;مانجو 87&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 88</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-88&#39;, &#39;مانجو 88&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 89</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-89&#39;, &#39;مانجو 89&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 90</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-90&#39;, &#39;مانجو 90&#39;, 80)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 91</div><span class="meal-price">95 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-91&#39;, &#39;مانجو 91&#39;, 95)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 92</div><span class="meal-price">110 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-92&#39;, &#39;مانجو 92&#39;, 110)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 93</div><span class="meal-price">125 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-93&#39;, &#39;مانجو 93&#39;, 125)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 94</div><span class="meal-price">140 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-94&#39;, &#39;مانجو 94&#39;, 140)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 95</div><span class="meal-price">155 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-95&#39;, &#39;مانجو 95&#39;, 155)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 96</div><span class="meal-price">170 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-96&#39;, &#39;مانجو 96&#39;, 170)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 97</div><span class="meal-price">185 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-97&#39;, &#39;مانجو 97&#39;, 185)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 98</div><span class="meal-price">200 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-98&#39;, &#39;مانجو 98&#39;, 200)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 99</div><span class="meal-price">215 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-99&#39;, &#39;مانجو 99&#39;, 215)">+</button>
-                </div>
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">مانجو 100</div><span class="meal-price">80 ج</span></div>
-                    <button class="add-qty" onclick="addToCart(&#39;مشروبات-100&#39;, &#39;مانجو 100&#39;, 80)">+</button>
-                </div></div>
+        <div class="menu-list" id="menu-container"></div>
     </div>
 
-    <div class="floating-cart" onclick="toggleCart()">
-        🛒 <span id="cart-badge" style="position:absolute; top:0; right:0; background:red; color:white; padding:3px 8px; border-radius:50%; font-size:12px; font-weight:bold;">0</span>
-    </div>
+    <div class="floating-cart" onclick="toggleCart()">🛒 <span id="cart-badge">0</span></div>
 
     <script>
-        // بيانات الـ 1000 وجبة
-        const categoryNames = ["المشويات", "سي فوود", "طواجن", "بيتزا", "برجر", "مكرونات", "سندوتشات", "مقبلات", "حلويات", "مشروبات"];
-        const mealSamples = { "المشويات": ["كفتة", "ريش", "شيش"], "سي فوود": ["جمبري", "سمك"], "طواجن": ["عكاوي", "بامية"], "بيتزا": ["مارجريتا", "سوبريم"], "برجر": ["دبل", "زنجر"], "مكرونات": ["بشاميل"], "سندوتشات": ["شاورما"], "مقبلات": ["سلطة"], "حلويات": ["كنافة"], "مشروبات": ["مانجو"] };
-
-        const allMeals = [];
-        categoryNames.forEach(cat => {
-            const samples = mealSamples[cat];
-            for (let i = 1; i <= 100; i++) {
-                allMeals.push({ id: `${cat}-${i}`, name: `${samples[i % samples.length]} ${i}`, price: 80 + (i % 10) * 15, category: cat });
-            }
-        });
+        const menuData = {
+            "المشويات": [
+                { id: 1, name: "كيلو كفتة حاتي بلدي", price: 480 },
+                { id: 2, name: "كيلو كباب وكفتة مشكل", price: 550 },
+                { id: 3, name: "كيلو ريش ضاني بلدي", price: 680 },
+                { id: 4, name: "كيلو طرب مخصوص", price: 520 },
+                { id: 5, name: "نص فرخة مشوية + أرز", price: 185 },
+                { id: 6, name: "وجبة شيش طاووق (6 قطع)", price: 160 },
+                { id: 7, name: "فرد حمام محشي أرز", price: 130 },
+                { id: 8, name: "كيلو سجق مشوي فحم", price: 420 }
+            ],
+            "بيتزا": [
+                { id: 9, name: "بيتزا مارجريتا (كبير)", price: 135 },
+                { id: 10, name: "بيتزا سوبر سوبريم (كبير)", price: 210 },
+                { id: 11, name: "بيتزا تشيكن رانش (كبير)", price: 220 },
+                { id: 12, name: "بيتزا تونة وبصل (كبير)", price: 195 },
+                { id: 13, name: "بيتزا مشكل جبن (كبير)", price: 180 },
+                { id: 14, name: "بيتزا سي فود (كبير)", price: 290 }
+            ],
+            "فطائر": [
+                { id: 15, name: "فطيرة سجق إسكندراني", price: 170 },
+                { id: 16, name: "فطيرة مشكل لحوم شرقي", price: 210 },
+                { id: 17, name: "فطيرة كرافت بالعسل", price: 130 },
+                { id: 18, name: "فطيرة بسطرمة وجبن", price: 195 },
+                { id: 19, name: "فطيرة قشطة وعسل", price: 110 }
+            ],
+            "المكرونات": [
+                { id: 20, name: "مكرونة بشاميل (قطعة كبيرة)", price: 85 },
+                { id: 21, name: "مكرونة نيجرسكو دجاج", price: 110 },
+                { id: 22, name: "مكرونة وايت صوص وجمبري", price: 190 },
+                { id: 23, name: " مكرونة باللحمة المفرومة", price: 75 },
+                { id: 24, name: "فوتشيني ألفريدو دجاج", price: 145 },
+                { id: 25, name: "مكرونة سبيكة بالصلصة", price: 50 }
+            ],
+            "طواجن": [  
+                { id: 26, name: "طاجن عكاوي بالبصل الأورما", price: 350 },
+                { id: 27, name: "طاجن موزة ضاني بالأرز", price: 390 },
+                { id: 28, name: "طاجن بامية باللحمة البلدي", price: 210 },
+                { id: 29, name: "طاجن ورق عنب بالكوارع", price: 280 },
+                { id: 30, name: "طاجن لسان عصفور باللحم", price: 180 },
+                { id: 31, name: "طاجن مسقعة باللحم المفروم", price: 140 }
+            ],
+            "وجبات عائلة": [
+                { id: 32, name: "صينية جراند (كفتة+فرخة+أرز+سلطات)", price: 850 },
+                { id: 33, name: "صينية الوحش (كيلو مشكل مشويات)", price: 950 },
+                { id: 34, name: "وجبة الأكيلة (نص كفتة+فرخة كاملة)", price: 620 },
+                { id: 35, name: "صينية ميكس جريل (ريش وكفتة وطرب)", price: 1200 }
+            ],
+            "سندوتشات": [
+                { id: 36, name: "دبل تشيز برجر لحم", price: 150 },
+                { id: 37, name: "ساندوتش زنجر سوبريم", price: 125 },
+                { id: 38, name: "حواوشي بلدي على الفحم", price: 75 },
+                { id: 39, name: "ساندوتش كبدة إسكندراني", price: 55 },
+                { id: 40, name: "ساندوتش سجق شرقي مدخن", price: 65 },
+                { id: 41, name: "ساندوتش كفتة حاتي كبير", price: 70 }
+            ],
+            "حلويات": [
+                { id: 42, name: "طبق أم علي بالمكسرات", price: 80 },
+                { id: 43, name: "أرز بلبن في الفرن", price: 50 },
+                { id: 44, name: "كنافة بالنوتيلا (طبق)", price: 95 },
+                { id: 45, name: "طاجن نوتيلا وسعادة", price: 120 },
+                { id: 46, name: "قطعة بسبوسة سادة", price: 35 }
+            ],
+            "مشروبات": [
+                { id: 47, name: "بيبسي لتر", price: 45 },
+                { id: 48, name: "مياه معدنية صغيرة", price: 15 },
+                { id: 49, name: "عصير مانجو فريش (كأس)", price: 55 },
+                { id: 50, name: "كانز مشروبات غازية", price: 25 },
+                { id: 51, name: "براد شاي كبير", price: 40 }
+            ]
+        };
 
         let cart = [];
         let activeCat = "المشويات";
-        let stats = JSON.parse(localStorage.getItem('grand_takeaway_stats')) || { revenue: 0, count: 0 };
+        let stats = JSON.parse(localStorage.getItem('grand_final_stats_2026')) || { revenue: 0, orders: 0 };
+        let customers = JSON.parse(localStorage.getItem('grand_db_customers')) || {};
 
-        function initApp() {
-            renderCategories();
-            renderMeals(allMeals.filter(m => m.category === activeCat));
+        function init() { renderTabs(); showCategory(activeCat); }
+
+        function renderTabs() {
+            document.getElementById('tabs').innerHTML = Object.keys(menuData).map(cat => 
+                `<div class="cat-tab ${cat === activeCat ? 'active' : ''}" onclick="showCategory('${cat}')">${cat}</div>`).join('');
         }
 
-        function renderCategories() {
-            document.getElementById('tabs').innerHTML = categoryNames.map(cat => 
-                `<div class="cat-tab ${cat === activeCat ? 'active' : ''}" onclick="selectCategory('${cat}')">${cat}</div>`).join('');
+        function showCategory(cat) {
+            activeCat = cat; renderTabs();
+            displayMeals(menuData[cat]);
         }
 
-        function selectCategory(cat) { activeCat = cat; document.getElementById('search-input').value = ''; renderCategories(); renderMeals(allMeals.filter(m => m.category === activeCat)); }
+        function displayMeals(list) {
+            document.getElementById('menu-container').innerHTML = list.map(m => `
+                <div class="meal-card">
+                    <div class="meal-info"><h3>${m.name}</h3><div class="meal-price">${m.price} ج</div></div>
+                    <button class="add-qty" onclick="addToCart(${m.id},'${m.name}',${m.price})">+</button>
+                </div>`).join('');
+        }
 
         function handleSearch() {
             const q = document.getElementById('search-input').value.toLowerCase();
-            const filtered = q === '' ? allMeals.filter(m => m.category === activeCat) : allMeals.filter(m => m.name.toLowerCase().includes(q));
-            renderMeals(filtered);
+            const all = []; Object.values(menuData).forEach(c => all.push(...c));
+            displayMeals(q === '' ? menuData[activeCat] : all.filter(i => i.name.toLowerCase().includes(q)));
         }
 
-        function renderMeals(list) {
-            document.getElementById('menu-container').innerHTML = list.map(meal => `
-                <div class="meal-card">
-                    <div><div style="font-weight:bold">${meal.name}</div><span class="meal-price">${meal.price} ج</span></div>
-                    <button class="add-qty" onclick="addToCart('${meal.id}', '${meal.name}', ${meal.price})">+</button>
-                </div>`).join('');
+        function lookupCustomer() {
+            const phone = document.getElementById('cust-phone').value;
+            const nameField = document.getElementById('cust-name');
+            const addrField = document.getElementById('cust-addr');
+            if (customers[phone]) {
+                nameField.value = customers[phone].name;
+                addrField.value = customers[phone].addr;
+                nameField.classList.add('highlight-input');
+                addrField.classList.add('highlight-input');
+            } else {
+                nameField.classList.remove('highlight-input');
+                addrField.classList.remove('highlight-input');
+            }
         }
 
         function addToCart(id, name, price) {
             const exist = cart.find(i => i.id === id);
-            if(exist) exist.qty++; else cart.push({id, name, price, qty: 1});
+            if(exist) exist.qty++; else cart.push({id, name, price, qty:1});
             updateUI();
         }
 
-        function removeFromCart(idx) { cart.splice(idx, 1); updateUI(); }
-
         function updateUI() {
-            document.getElementById('cart-list').innerHTML = cart.map((i, idx) => `
+            const list = document.getElementById('cart-list');
+            list.innerHTML = cart.map((i, idx) => `
                 <div class="cart-item">
-                    <span>${i.name} x${i.qty}</span>
-                    <span>${i.price * i.qty}ج <span class="btn-del" onclick="removeFromCart(${idx})">🗑️</span></span>
+                    <span>${i.name} (x${i.qty})</span>
+                    <span>${i.price * i.qty}ج <span onclick="remove(${idx})" style="color:red; cursor:pointer; margin-right:5px;">×</span></span>
                 </div>`).join('');
-            const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
-            document.getElementById('grand-total').innerText = total;
+            
+            const subTotal = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+            const delivery = parseInt(document.getElementById('delivery-fee').value) || 0;
+            document.getElementById('grand-total').innerText = subTotal + delivery;
             document.getElementById('cart-badge').innerText = cart.reduce((s, i) => s + i.qty, 0);
         }
 
+        function remove(idx) { cart.splice(idx, 1); updateUI(); }
         function toggleCart() { document.getElementById('cart-panel').classList.toggle('open'); }
 
-        function clearAll() {
-            if(confirm("مسح الطلب الحالي؟")) {
-                cart = [];
-                document.getElementById('cust-name').value = '';
-                document.getElementById('cust-phone').value = '';
-                document.getElementById('cust-addr').value = '';
-                updateUI();
-            }
-        }
-
         function sendWhatsApp() {
-            const name = document.getElementById('cust-name').value;
             const phone = document.getElementById('cust-phone').value;
+            const name = document.getElementById('cust-name').value;
             const addr = document.getElementById('cust-addr').value;
-            if(!phone) return alert("يرجى إدخال رقم الواتساب أولاً");
+            const total = document.getElementById('grand-total').innerText;
+            const delivery = document.getElementById('delivery-fee').value;
+
+            if(!phone || !name) return alert("يرجى إكمال بيانات العميل");
             if(cart.length === 0) return alert("السلة فارغة");
 
-            let msg = `*أوردر جـرانـد ريـسـتـورانـت*\n`;
-            msg += `👤 العميل: ${name || 'غير مسجل'}\n`;
-            if(addr) msg += `📍 العنوان: ${addr}\n`;
-            msg += `----------\n`;
-            cart.forEach(i => msg += `• ${i.name} (x${i.qty}) = ${i.price * i.qty}ج\n`);
-            msg += `----------\n💰 الإجمالي: ${document.getElementById('grand-total').innerText} ج.م`;
-            
-            // تسجيل في الإحصائيات عند الإرسال
-            stats.revenue += parseInt(document.getElementById('grand-total').innerText);
-            stats.count += 1;
-            localStorage.setItem('grand_takeaway_stats', JSON.stringify(stats));
+            customers[phone] = { name: name, addr: addr };
+            localStorage.setItem('grand_db_customers', JSON.stringify(customers));
 
+            let msg = `*فـاتـورة جـرانـد ريـسـتـورانـت*\n👤 العميل: ${name}\n📍 العنوان: ${addr || 'تيك أواي'}\n----------\n`;
+            cart.forEach(i => msg += `• ${i.name} (x${i.qty}) = ${i.price * i.qty}ج\n`);
+            msg += `----------\n🛵 التوصيل: ${delivery} ج\n💰 *الإجمالي: ${total} ج.م*`;
+
+            stats.revenue += parseInt(total); stats.orders += 1;
+            localStorage.setItem('grand_final_stats_2026', JSON.stringify(stats));
             window.open(`https://api.whatsapp.com/send?phone=20${phone}&text=${encodeURIComponent(msg)}`);
         }
 
         function toggleReports() {
             document.getElementById('reports-panel').classList.toggle('open');
             document.getElementById('reports-content').innerHTML = `
-                <div style="background:#222; padding:20px; border-radius:10px; border-right:5px solid var(--gold);">
-                    <p style="font-size:1.1rem">💰 إجمالي مبيعات اليوم: <br><b style="font-size:1.8rem; color:var(--gold)">${stats.revenue} ج.م</b></p>
-                    <hr style="margin:10px 0; opacity:0.2">
-                    <p>🧾 عدد الفواتير الناجحة: <b>${stats.count}</b></p>
+                <div style="background:#1a1a1a; padding:15px; border-radius:10px; border-right:4px solid var(--gold);">
+                    دخل اليوم: <b style="color:var(--gold)">${stats.revenue} ج.م</b><br>
+                    الطلبات: <b>${stats.orders}</b><br>
+                    قاعدة بيانات العملاء: <b>${Object.keys(customers).length} عميل</b>
                 </div>`;
         }
 
-        function resetStats() { if(confirm("تصفير مبيعات اليوم؟")) { stats = {revenue:0, count:0}; localStorage.setItem('grand_takeaway_stats', JSON.stringify(stats)); toggleReports(); } }
+        function clearCart() { 
+            cart = []; 
+            document.querySelectorAll('.customer-form input:not(#delivery-fee)').forEach(i => i.value = '');
+            updateUI(); 
+        }
 
-        initApp();
+        function resetStats() { if(confirm("تصفير المبيعات؟")) { stats = {revenue:0, orders:0}; localStorage.setItem('grand_final_stats_2026', JSON.stringify(stats)); toggleReports(); } }
+
+        init();
     </script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
 
-</body></html>
+<script>
+  // بيانات الربط (ستحصل عليها من إعدادات مشروعك في Firebase)
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  // تهيئة Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // دالة حفظ عميل جديد سحابياً
+  function saveCustomerToCloud(phone, data) {
+      db.ref('customers/' + phone).set(data);
+  }
+
+  // دالة جلب كل العملاء عند فتح البرنامج
+  function syncCustomers() {
+      db.ref('customers').on('value', (snapshot) => {
+          const data = snapshot.val();
+          if (data) {
+              customers = data; // تحديث قائمة العملاء المحلية من السحابة
+              console.log("تم مزامنة بيانات العملاء بنجاح!");
+          }
+      });
+  }
+  
+  // استدعاء المزامنة عند بدء التشغيل
+  syncCustomers();
+</script>
+</body>
+</html>
